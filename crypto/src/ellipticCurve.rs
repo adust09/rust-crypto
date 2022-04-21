@@ -1,5 +1,13 @@
+use std::fmt;
+use std::ops::Add;
+use std::ops::Div;
+use std::ops::Mul;
+use std::ops::Sub;
+
+pub mod fieldElement;
+
 // Elliptic Curve: y^2 = x^3 + a*x + b
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum Point<T> {
     Coordinate { x: T, y: T, a: T, b: T },
     Infinity,
@@ -34,7 +42,7 @@ where
 }
 
 #[cfg(test)]
-mod tests {
+mod curvePointTests {
     use super::*;
     use primitive_types::U256;
 
@@ -114,8 +122,9 @@ where
 }
 
 #[cfg(test)]
-mod tests {
+mod curveTests {
     use super::*;
+    use fieldElement::FieldElement;
     use primitive_types::U256;
 
     #[test]
