@@ -1,3 +1,6 @@
+pub mod ellipticCurve;
+pub mod fieldElement;
+
 impl<T, U> Mul<U> for Point<T>
 where
     T: Add<Output = T> + Sub<Output = T> + Div<Output = T> + Mul<Output = T> + PartialOrd + Copy,
@@ -19,7 +22,7 @@ where
 }
 
 #[cfg(test)]
-mod tests {
+mod curvePoinTests {
     use super::*;
     use primitive_types::U256;
 
